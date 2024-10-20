@@ -1,6 +1,8 @@
 # embsrv  
 A simple FastAPI-based server that provides a few text embedding and tokenization services using the `intfloat/e5-large-v2` model from Hugging Face. This server allows you to load the model once and expose it over HTTP for multiple applications to use.
-
+  
+early days.
+  
 ## Requirements
 * Python 3.11.10 (use pyenv to install)  
 * **GPU**: NVIDIA GPU with CUDA support (e.g., RTX series)  
