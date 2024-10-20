@@ -1,7 +1,7 @@
 import math
 from sentence_transformers import SentenceTransformer
 from fastapi import FastAPI
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 app = FastAPI()
 
@@ -11,21 +11,27 @@ model = SentenceTransformer(model_name)
 
 
 class EmbeddingRequest(BaseModel):
-    text: str
+    text: str = Field(..., min_length=1,
+                      description="text must be atleast 1 character.")
 
 
 class NumberOfTokensRequest(BaseModel):
-    text: str
+    text: str = Field(..., min_length=1,
+                      description="text must be atleast 1 character.")
 
 
 class TruncateRequest(BaseModel):
-    text: str
-    max_tokens: int
+    text: str = Field(..., min_length=1,
+                      description="text must be atleast 1 character.")
+    max_tokens: int = Field(..., gt=0,
+                            description="Max tokens must be a greater then 0")
 
 
 class TextInTokenSizedChunksRequest(BaseModel):
-    text: str
-    max_tokens: int
+    text: str = Field(..., min_length=1,
+                      description="text must be atleast 1 character.")
+    max_tokens: int = Field(..., gt=0,
+                            description="Max tokens must be a greater then 0")
 
 
 @app.get("/")
@@ -90,7 +96,7 @@ def text_chunks_by_token_size(text: str, token_size: int = 512) -> list:
 
 
 def num_tokens_from_string(string: str) -> int:
-    """Returns the number of tokens ina text string."""
+    """Returns the number of tokens in a text string."""
     tokens = model.tokenizer.tokenize(string)
     num_tokens = len(tokens)
     return num_tokens
