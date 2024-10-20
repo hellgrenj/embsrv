@@ -1,5 +1,5 @@
 # embsrv  
-A simple FastAPI-based server that provides various text embedding and tokenization services using the `intfloat/e5-large-v2` model from Hugging Face. This server allows you to load the model once and expose it over HTTP for multiple applications to use.
+A simple FastAPI-based server that provides a few text embedding and tokenization services using the `intfloat/e5-large-v2` model from Hugging Face. This server allows you to load the model once and expose it over HTTP for multiple applications to use.
 
 ## Requirements
 * Python 3.11.10 (use pyenv to install)  
@@ -21,7 +21,7 @@ A simple FastAPI-based server that provides various text embedding and tokenizat
 - **Chunking**: Split text into chunks based on a maximum number of tokens per chunk.
 
 ## API Endpoints
-(checkout ./demo-client.py for example usage)  
+(checkout ./demo_client.py for example usage)  
 ### 1. `/` or `/info` (GET)
 Returns basic information about the model loaded on the server.
 - **Response:**
