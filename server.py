@@ -12,26 +12,26 @@ model = SentenceTransformer(model_name)
 
 class EmbeddingRequest(BaseModel):
     text: str = Field(..., min_length=1,
-                      description="text must be atleast 1 character.")
+                      description="text must be at least 1 character.")
 
 
 class NumberOfTokensRequest(BaseModel):
     text: str = Field(..., min_length=1,
-                      description="text must be atleast 1 character.")
+                      description="text must be at least 1 character.")
 
 
 class TruncateRequest(BaseModel):
     text: str = Field(..., min_length=1,
-                      description="text must be atleast 1 character.")
+                      description="text must be at least 1 character.")
     max_tokens: int = Field(..., gt=0,
-                            description="Max tokens must be a greater then 0")
+                            description="max_tokens must be a greater then 0")
 
 
 class TextInTokenSizedChunksRequest(BaseModel):
     text: str = Field(..., min_length=1,
                       description="text must be atleast 1 character.")
     max_tokens: int = Field(..., gt=0,
-                            description="Max tokens must be a greater then 0")
+                            description="max_tokens must be a greater then 0")
 
 
 @app.get("/")
