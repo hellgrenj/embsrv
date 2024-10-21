@@ -24,14 +24,14 @@ class TruncateRequest(BaseModel):
     text: str = Field(..., min_length=1,
                       description="text must be at least 1 character.")
     max_tokens: int = Field(..., gt=0,
-                            description="max_tokens must be a greater then 0")
+                            description="max_tokens must be greater than 0")
 
 
 class TextInTokenSizedChunksRequest(BaseModel):
     text: str = Field(..., min_length=1,
                       description="text must be atleast 1 character.")
     max_tokens: int = Field(..., gt=0,
-                            description="max_tokens must be a greater then 0")
+                            description="max_tokens must be greater than 0")
 
 
 @app.get("/")
